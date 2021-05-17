@@ -1,0 +1,15 @@
+# Configuration for the build_runner library which is responsible for code 
+# generation performed when running `derry build` aka
+# `flutter packages pub run build_runner build`
+targets:
+  $default:
+    builders:
+      freezed:
+        generate_for:
+          - "**/models/**"
+          - "**/unions/**"
+
+      json_serializable:
+        generate_for:
+          - "**/models/**"
+          - "**/unions/**"
