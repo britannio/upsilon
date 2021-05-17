@@ -16,6 +16,16 @@ class UpsilonApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Upsilon',
       // theme: themeData,
+      color: Colors.purple,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          },
+        ),
+      ),
       builder: _builder,
       restorationScopeId: 'root',
       shortcuts: <LogicalKeySet, Intent>{...WidgetsApp.defaultShortcuts},
