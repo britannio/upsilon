@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+/*import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weapon.freezed.dart';
 
@@ -12,3 +12,4 @@ class Weapon with _$Weapon {
   const factory Weapon.rope() = _Rope;
   const factory Weapon.wrench() = _Wrench;
 }
+*/

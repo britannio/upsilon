@@ -1,3 +1,4 @@
+/*
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'character.freezed.dart';
 
@@ -11,3 +12,4 @@ class Character with _$Character {
   const factory Character.blue() = _Blue;
   const factory Character.white() = _White;
 }
+*/

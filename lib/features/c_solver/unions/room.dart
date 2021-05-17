@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+/*import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'room.freezed.dart';
 
@@ -15,3 +15,4 @@ class Room with _$Room {
   const factory Room.library() = _Library;
   const factory Room.billiard() = _Billiard;
 }
+*/

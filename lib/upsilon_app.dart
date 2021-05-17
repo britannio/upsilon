@@ -13,12 +13,14 @@ class UpsilonApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const purple = Color(0xFF8000FF);
     return MaterialApp.router(
       title: 'Upsilon',
-      // theme: themeData,
-      color: Colors.purple,
+      color: purple,
       theme: ThemeData(
         brightness: Brightness.dark,
+        accentColor: purple,
+        primaryColor: purple,
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: <TargetPlatform, PageTransitionsBuilder>{
             TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),

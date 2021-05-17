@@ -93,8 +93,6 @@ abstract class _$CharacterCopyWith<$Res> {
           _Character value, $Res Function(_Character) then) =
       __$CharacterCopyWithImpl<$Res>;
   $Res call({Character character});
-
-  $CharacterCopyWith<$Res> get character;
 }
 
 /// @nodoc
@@ -117,18 +115,11 @@ class __$CharacterCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
               as Character,
     ));
   }
-
-  @override
-  $CharacterCopyWith<$Res> get character {
-    return $CharacterCopyWith<$Res>(_value.character, (value) {
-      return _then(_value.copyWith(character: value));
-    });
-  }
 }
 
 /// @nodoc
-class _$_Character implements _Character {
-  const _$_Character(this.character);
+class _$_Character extends _Character {
+  const _$_Character(this.character) : super._();
 
   @override
   final Character character;
@@ -205,8 +196,9 @@ class _$_Character implements _Character {
   }
 }
 
-abstract class _Character implements Card {
+abstract class _Character extends Card {
   const factory _Character(Character character) = _$_Character;
+  const _Character._() : super._();
 
   Character get character => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -219,8 +211,6 @@ abstract class _$RoomCopyWith<$Res> {
   factory _$RoomCopyWith(_Room value, $Res Function(_Room) then) =
       __$RoomCopyWithImpl<$Res>;
   $Res call({Room room});
-
-  $RoomCopyWith<$Res> get room;
 }
 
 /// @nodoc
@@ -243,18 +233,11 @@ class __$RoomCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
               as Room,
     ));
   }
-
-  @override
-  $RoomCopyWith<$Res> get room {
-    return $RoomCopyWith<$Res>(_value.room, (value) {
-      return _then(_value.copyWith(room: value));
-    });
-  }
 }
 
 /// @nodoc
-class _$_Room implements _Room {
-  const _$_Room(this.room);
+class _$_Room extends _Room {
+  const _$_Room(this.room) : super._();
 
   @override
   final Room room;
@@ -330,8 +313,9 @@ class _$_Room implements _Room {
   }
 }
 
-abstract class _Room implements Card {
+abstract class _Room extends Card {
   const factory _Room(Room room) = _$_Room;
+  const _Room._() : super._();
 
   Room get room => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -343,8 +327,6 @@ abstract class _$WeaponCopyWith<$Res> {
   factory _$WeaponCopyWith(_Weapon value, $Res Function(_Weapon) then) =
       __$WeaponCopyWithImpl<$Res>;
   $Res call({Weapon weapon});
-
-  $WeaponCopyWith<$Res> get weapon;
 }
 
 /// @nodoc
@@ -367,18 +349,11 @@ class __$WeaponCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
               as Weapon,
     ));
   }
-
-  @override
-  $WeaponCopyWith<$Res> get weapon {
-    return $WeaponCopyWith<$Res>(_value.weapon, (value) {
-      return _then(_value.copyWith(weapon: value));
-    });
-  }
 }
 
 /// @nodoc
-class _$_Weapon implements _Weapon {
-  const _$_Weapon(this.weapon);
+class _$_Weapon extends _Weapon {
+  const _$_Weapon(this.weapon) : super._();
 
   @override
   final Weapon weapon;
@@ -454,8 +429,9 @@ class _$_Weapon implements _Weapon {
   }
 }
 
-abstract class _Weapon implements Card {
+abstract class _Weapon extends Card {
   const factory _Weapon(Weapon weapon) = _$_Weapon;
+  const _Weapon._() : super._();
 
   Weapon get weapon => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
