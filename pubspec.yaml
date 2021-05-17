@@ -78,6 +78,10 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
+# Uses Derry, a Dart script manager
+# https://github.com/frencojobs/derry/
+# run `flutter pub global activate derry` to install Derry then `derry <script>` to
+# execute a script 
 scripts:
   build: flutter pub run build_runner build --delete-conflicting-outputs
   watch: flutter pub run build_runner watch --delete-conflicting-outputs
