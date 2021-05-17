@@ -127,7 +127,6 @@ class __$CharacterCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Character implements _Character {
   const _$_Character(this.character);
 
@@ -254,7 +253,6 @@ class __$RoomCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Room implements _Room {
   const _$_Room(this.room);
 
@@ -379,7 +377,6 @@ class __$WeaponCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Weapon implements _Weapon {
   const _$_Weapon(this.weapon);
 

@@ -122,7 +122,6 @@ class __$RedCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Red implements _Red {
   const _$_Red();
 
@@ -221,7 +220,6 @@ class __$GreenCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Green implements _Green {
   const _$_Green();
 
@@ -320,7 +318,6 @@ class __$YellowCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Yellow implements _Yellow {
   const _$_Yellow();
 
@@ -419,7 +416,6 @@ class __$PurpleCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Purple implements _Purple {
   const _$_Purple();
 
@@ -518,7 +514,6 @@ class __$BlueCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Blue implements _Blue {
   const _$_Blue();
 
@@ -617,7 +612,6 @@ class __$WhiteCopyWithImpl<$Res> extends _$CharacterCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_White implements _White {
   const _$_White();
 

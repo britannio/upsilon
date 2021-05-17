@@ -124,7 +124,6 @@ class __$CandlestickCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Candlestick implements _Candlestick {
   const _$_Candlestick();
 
@@ -223,7 +222,6 @@ class __$KnifeCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Knife implements _Knife {
   const _$_Knife();
 
@@ -322,7 +320,6 @@ class __$LeadPipeCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_LeadPipe implements _LeadPipe {
   const _$_LeadPipe();
 
@@ -421,7 +418,6 @@ class __$RevolverCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Revolver implements _Revolver {
   const _$_Revolver();
 
@@ -520,7 +516,6 @@ class __$RopeCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Rope implements _Rope {
   const _$_Rope();
 
@@ -619,7 +614,6 @@ class __$WrenchCopyWithImpl<$Res> extends _$WeaponCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Wrench implements _Wrench {
   const _$_Wrench();
 

@@ -146,7 +146,6 @@ class __$KitchenCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Kitchen implements _Kitchen {
   const _$_Kitchen();
 
@@ -257,7 +256,6 @@ class __$BallroomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Ballroom implements _Ballroom {
   const _$_Ballroom();
 
@@ -370,7 +368,6 @@ class __$ConservatoryCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Conservatory implements _Conservatory {
   const _$_Conservatory();
 
@@ -483,7 +480,6 @@ class __$DiningRoomCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_DiningRoom implements _DiningRoom {
   const _$_DiningRoom();
 
@@ -594,7 +590,6 @@ class __$LoungeCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Lounge implements _Lounge {
   const _$_Lounge();
 
@@ -705,7 +700,6 @@ class __$HallCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Hall implements _Hall {
   const _$_Hall();
 
@@ -816,7 +810,6 @@ class __$StudyCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Study implements _Study {
   const _$_Study();
 
@@ -927,7 +920,6 @@ class __$LibraryCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Library implements _Library {
   const _$_Library();
 
@@ -1038,7 +1030,6 @@ class __$BilliardCopyWithImpl<$Res> extends _$RoomCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
 class _$_Billiard implements _Billiard {
   const _$_Billiard();
 
