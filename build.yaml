@@ -13,3 +13,5 @@ targets:
         generate_for:
           - "**/models/**"
           - "**/unions/**"
+        options:
+            explicit_to_json: true

@@ -12,6 +12,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Player _$PlayerFromJson(Map<String, dynamic> json) {
+  return _Player.fromJson(json);
+}
+
 /// @nodoc
 class _$PlayerTearOff {
   const _$PlayerTearOff();
@@ -22,6 +26,10 @@ class _$PlayerTearOff {
       cards: cards,
       plausibleCardsGroup: plausibleCardsGroup,
     );
+  }
+
+  Player fromJson(Map<String, Object> json) {
+    return Player.fromJson(json);
   }
 }
 
@@ -36,6 +44,7 @@ mixin _$Player {
   /// Cards the player could possibly have.
   Set<Set<Card>> get plausibleCardsGroup => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $PlayerCopyWith<Player> get copyWith => throw _privateConstructorUsedError;
 }
@@ -108,10 +117,15 @@ class __$PlayerCopyWithImpl<$Res> extends _$PlayerCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Player extends _Player {
   const _$_Player({required this.cards, required this.plausibleCardsGroup})
       : super._();
+
+  factory _$_Player.fromJson(Map<String, dynamic> json) =>
+      _$_$_PlayerFromJson(json);
 
   @override
 
@@ -148,6 +162,11 @@ class _$_Player extends _Player {
   @override
   _$PlayerCopyWith<_Player> get copyWith =>
       __$PlayerCopyWithImpl<_Player>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PlayerToJson(this);
+  }
 }
 
 abstract class _Player extends Player {
@@ -155,6 +174,8 @@ abstract class _Player extends Player {
       {required Set<Card> cards,
       required Set<Set<Card>> plausibleCardsGroup}) = _$_Player;
   const _Player._() : super._();
+
+  factory _Player.fromJson(Map<String, dynamic> json) = _$_Player.fromJson;
 
   @override
 

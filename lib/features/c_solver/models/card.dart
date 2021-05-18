@@ -5,12 +5,15 @@ import 'package:recase/recase.dart';
 import 'package:upsilon/features/c_solver/models/game.dart';
 
 part 'card.freezed.dart';
+part 'card.g.dart';
 
 @freezed
 class Card with _$Card {
   const factory Card.character(Character character) = _Character;
   const factory Card.room(Room room) = _Room;
   const factory Card.weapon(Weapon weapon) = _Weapon;
+
+  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
 
   const Card._();
 

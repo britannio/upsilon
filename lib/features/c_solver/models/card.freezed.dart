@@ -12,6 +12,20 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Card _$CardFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType'] as String) {
+    case 'character':
+      return _Character.fromJson(json);
+    case 'room':
+      return _Room.fromJson(json);
+    case 'weapon':
+      return _Weapon.fromJson(json);
+
+    default:
+      throw FallThroughError();
+  }
+}
+
 /// @nodoc
 class _$CardTearOff {
   const _$CardTearOff();
@@ -32,6 +46,10 @@ class _$CardTearOff {
     return _Weapon(
       weapon,
     );
+  }
+
+  Card fromJson(Map<String, Object> json) {
+    return Card.fromJson(json);
   }
 }
 
@@ -70,6 +88,7 @@ mixin _$Card {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -117,9 +136,14 @@ class __$CharacterCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Character extends _Character {
   const _$_Character(this.character) : super._();
+
+  factory _$_Character.fromJson(Map<String, dynamic> json) =>
+      _$_$_CharacterFromJson(json);
 
   @override
   final Character character;
@@ -194,11 +218,19 @@ class _$_Character extends _Character {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_CharacterToJson(this)..['runtimeType'] = 'character';
+  }
 }
 
 abstract class _Character extends Card {
   const factory _Character(Character character) = _$_Character;
   const _Character._() : super._();
+
+  factory _Character.fromJson(Map<String, dynamic> json) =
+      _$_Character.fromJson;
 
   Character get character => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -235,9 +267,14 @@ class __$RoomCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Room extends _Room {
   const _$_Room(this.room) : super._();
+
+  factory _$_Room.fromJson(Map<String, dynamic> json) =>
+      _$_$_RoomFromJson(json);
 
   @override
   final Room room;
@@ -311,11 +348,18 @@ class _$_Room extends _Room {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_RoomToJson(this)..['runtimeType'] = 'room';
+  }
 }
 
 abstract class _Room extends Card {
   const factory _Room(Room room) = _$_Room;
   const _Room._() : super._();
+
+  factory _Room.fromJson(Map<String, dynamic> json) = _$_Room.fromJson;
 
   Room get room => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -351,9 +395,14 @@ class __$WeaponCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Weapon extends _Weapon {
   const _$_Weapon(this.weapon) : super._();
+
+  factory _$_Weapon.fromJson(Map<String, dynamic> json) =>
+      _$_$_WeaponFromJson(json);
 
   @override
   final Weapon weapon;
@@ -427,11 +476,18 @@ class _$_Weapon extends _Weapon {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_WeaponToJson(this)..['runtimeType'] = 'weapon';
+  }
 }
 
 abstract class _Weapon extends Card {
   const factory _Weapon(Weapon weapon) = _$_Weapon;
   const _Weapon._() : super._();
+
+  factory _Weapon.fromJson(Map<String, dynamic> json) = _$_Weapon.fromJson;
 
   Weapon get weapon => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)

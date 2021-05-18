@@ -3,6 +3,7 @@ import 'package:upsilon/features/c_solver/models/card.dart';
 import 'package:upsilon/features/c_solver/models/game.dart';
 
 part 'game_event.freezed.dart';
+part 'game_event.g.dart';
 
 @freezed
 class GameEvent with _$GameEvent {
@@ -17,4 +18,9 @@ class GameEvent with _$GameEvent {
     required PlayerId player,
     required Card card,
   }) = _PlayerHasCard;
+
+  factory GameEvent.fromJson(Map<String, dynamic> json) =>
+      _$GameEventFromJson(json);
+
+  const GameEvent._();
 }

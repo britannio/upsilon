@@ -12,6 +12,18 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+GameEvent _$GameEventFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType'] as String) {
+    case 'plausibleCards':
+      return _PlausibleCards.fromJson(json);
+    case 'playerHasCard':
+      return _PlayerHasCard.fromJson(json);
+
+    default:
+      throw FallThroughError();
+  }
+}
+
 /// @nodoc
 class _$GameEventTearOff {
   const _$GameEventTearOff();
@@ -29,6 +41,10 @@ class _$GameEventTearOff {
       player: player,
       card: card,
     );
+  }
+
+  GameEvent fromJson(Map<String, Object> json) {
+    return GameEvent.fromJson(json);
   }
 }
 
@@ -65,7 +81,7 @@ mixin _$GameEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GameEventCopyWith<GameEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -137,9 +153,15 @@ class __$PlausibleCardsCopyWithImpl<$Res> extends _$GameEventCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
-class _$_PlausibleCards implements _PlausibleCards {
-  const _$_PlausibleCards({required this.player, required this.cards});
+class _$_PlausibleCards extends _PlausibleCards {
+  const _$_PlausibleCards({required this.player, required this.cards})
+      : super._();
+
+  factory _$_PlausibleCards.fromJson(Map<String, dynamic> json) =>
+      _$_$_PlausibleCardsFromJson(json);
 
   @override
   final PlayerId player;
@@ -215,11 +237,20 @@ class _$_PlausibleCards implements _PlausibleCards {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PlausibleCardsToJson(this)..['runtimeType'] = 'plausibleCards';
+  }
 }
 
-abstract class _PlausibleCards implements GameEvent {
+abstract class _PlausibleCards extends GameEvent {
   const factory _PlausibleCards(
       {required PlayerId player, required Set<Card> cards}) = _$_PlausibleCards;
+  const _PlausibleCards._() : super._();
+
+  factory _PlausibleCards.fromJson(Map<String, dynamic> json) =
+      _$_PlausibleCards.fromJson;
 
   @override
   PlayerId get player => throw _privateConstructorUsedError;
@@ -277,9 +308,15 @@ class __$PlayerHasCardCopyWithImpl<$Res> extends _$GameEventCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
-class _$_PlayerHasCard implements _PlayerHasCard {
-  const _$_PlayerHasCard({required this.player, required this.card});
+class _$_PlayerHasCard extends _PlayerHasCard {
+  const _$_PlayerHasCard({required this.player, required this.card})
+      : super._();
+
+  factory _$_PlayerHasCard.fromJson(Map<String, dynamic> json) =>
+      _$_$_PlayerHasCardFromJson(json);
 
   @override
   final PlayerId player;
@@ -355,11 +392,20 @@ class _$_PlayerHasCard implements _PlayerHasCard {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_PlayerHasCardToJson(this)..['runtimeType'] = 'playerHasCard';
+  }
 }
 
-abstract class _PlayerHasCard implements GameEvent {
+abstract class _PlayerHasCard extends GameEvent {
   const factory _PlayerHasCard({required PlayerId player, required Card card}) =
       _$_PlayerHasCard;
+  const _PlayerHasCard._() : super._();
+
+  factory _PlayerHasCard.fromJson(Map<String, dynamic> json) =
+      _$_PlayerHasCard.fromJson;
 
   @override
   PlayerId get player => throw _privateConstructorUsedError;
