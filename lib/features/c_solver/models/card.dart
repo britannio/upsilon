@@ -11,9 +11,9 @@ class Card with _$Card {
 
   const Card._();
 
-  static Set<Card> get all => {
-        ...Character.values.map($Card.character),
-        ...Room.values.map($Card.room),
-        ...Weapon.values.map($Card.weapon),
-      };
+  static final Set<Card> all = Set.unmodifiable({
+    ...Character.values.map($Card.character),
+    ...Room.values.map($Card.room),
+    ...Weapon.values.map($Card.weapon),
+  });
 }

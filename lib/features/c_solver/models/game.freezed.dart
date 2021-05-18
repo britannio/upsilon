@@ -125,8 +125,6 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
   }
 }
 
-@Implements(Validator)
-
 /// @nodoc
 class _$_Game extends _Game {
   const _$_Game(
@@ -174,7 +172,7 @@ class _$_Game extends _Game {
       __$GameCopyWithImpl<_Game>(this, _$identity);
 }
 
-abstract class _Game extends Game implements Validator {
+abstract class _Game extends Game {
   const factory _Game(
       {required Map<PlayerId, Player> playerMap,
       required Set<Card> remainingCards,

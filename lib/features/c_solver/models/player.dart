@@ -1,12 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:upsilon/features/c_solver/models/card.dart';
-import 'package:upsilon/features/c_solver/models/validator.dart';
 
 part 'player.freezed.dart';
 
 @freezed
 class Player with _$Player {
-  @Implements(Validator)
   const factory Player({
     /// Cards the player certainly has.
     required Set<Card> cards,

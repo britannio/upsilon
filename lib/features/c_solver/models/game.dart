@@ -3,13 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:upsilon/features/c_solver/models/card.dart';
 import 'package:upsilon/features/c_solver/models/game_event.dart';
 import 'package:upsilon/features/c_solver/models/player.dart';
-import 'package:upsilon/features/c_solver/models/validator.dart';
 
 part 'game.freezed.dart';
 
 @freezed
 class Game with _$Game {
-  @Implements(Validator)
   const factory Game({
     required Map<PlayerId, Player> playerMap,
     required Set<Card> remainingCards,

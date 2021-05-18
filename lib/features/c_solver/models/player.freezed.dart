@@ -108,8 +108,6 @@ class __$PlayerCopyWithImpl<$Res> extends _$PlayerCopyWithImpl<$Res>
   }
 }
 
-@Implements(Validator)
-
 /// @nodoc
 class _$_Player extends _Player {
   const _$_Player({required this.cards, required this.plausibleCardsGroup})
@@ -152,7 +150,7 @@ class _$_Player extends _Player {
       __$PlayerCopyWithImpl<_Player>(this, _$identity);
 }
 
-abstract class _Player extends Player implements Validator {
+abstract class _Player extends Player {
   const factory _Player(
       {required Set<Card> cards,
       required Set<Set<Card>> plausibleCardsGroup}) = _$_Player;
