@@ -29,6 +29,7 @@ dependencies:
   auto_route: any
   provider: any
   font_awesome_flutter: any
+  recase: ^4.0.0
 
 dev_dependencies:
   flutter_test:
