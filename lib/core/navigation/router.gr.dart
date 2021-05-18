@@ -22,7 +22,8 @@ class AppRouter extends _i1.RootStackRouter {
       var args = entry.routeData.argsAs<GameRouteArgs>();
       return _i1.MaterialPageX(
           entry: entry,
-          child: _i3.GameAdaptor(key: args.key, myCards: args.myCards));
+          child: _i3.GameAdaptor(key: args.key, myCards: args.myCards),
+          fullscreenDialog: true);
     }
   };
 

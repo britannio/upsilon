@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:provider/provider.dart';
+import 'package:upsilon/core/components/rounded_bottom_corners_border.dart';
 import 'package:upsilon/core/navigation/navigation.dart';
 import 'package:upsilon/features/c_solver/models/card.dart';
 import 'package:upsilon/features/home/notifiers/home_notifier.dart';
@@ -22,13 +23,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Upsilon - Cluedo Solver'),
         centerTitle: true,
-        elevation: 8,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(16),
-            bottomRight: Radius.circular(16),
-          ),
-        ),
+        shape: RoundedBottomCornersBorder(16),
       ),
       backgroundColor: Color(0xFF212121),
       body: Padding(

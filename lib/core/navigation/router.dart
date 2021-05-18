@@ -7,7 +7,11 @@ import 'package:upsilon/features/home/screens/home_screen.dart';
   preferRelativeImports: false,
   routes: [
     AutoRoute(path: '/', page: HomeAdaptor),
-    AutoRoute(path: 'game', page: GameAdaptor),
+    AutoRoute(
+      path: 'game',
+      page: GameAdaptor,
+      fullscreenDialog: true,
+    ),
     RedirectRoute(path: '*', redirectTo: '/'),
   ],
 )
