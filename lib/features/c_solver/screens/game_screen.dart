@@ -1,10 +1,28 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Card;
+import 'package:provider/provider.dart';
+import 'package:upsilon/features/c_solver/models/card.dart';
+import 'package:upsilon/features/c_solver/notifiers/game_notifier.dart';
+
+class GameAdaptor extends StatelessWidget {
+  const GameAdaptor({Key? key, required this.myCards}) : super(key: key);
+  final Set<Card> myCards;
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<GameNotifier>(
+      create: (BuildContext context) => GameNotifier(myCards),
+      child: GameScreen(),
+    );
+  }
+}
 
 class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Game')),
+      appBar: AppBar(
+        title: Text('Game'),
+      ),
     );
   }
 }

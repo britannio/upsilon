@@ -12,6 +12,7 @@ class GameEvent with _$GameEvent {
     required Set<Card> cards,
   }) = _PlausibleCards;
 
+  /// [player] definitely has [card].
   const factory GameEvent.playerHasCard({
     required PlayerId player,
     required Card card,

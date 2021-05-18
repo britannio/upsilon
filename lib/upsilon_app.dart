@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upsilon/core/appearance/theme.dart';
 
 import 'core/navigation/navigation.dart';
 
@@ -13,21 +14,10 @@ class UpsilonApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const purple = Color(0xFF8000FF);
     return MaterialApp.router(
       title: 'Upsilon',
       color: purple,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        accentColor: purple,
-        primaryColor: purple,
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          },
-        ),
-      ),
+      theme: themeData(context),
       builder: _builder,
       restorationScopeId: 'root',
       shortcuts: <LogicalKeySet, Intent>{...WidgetsApp.defaultShortcuts},

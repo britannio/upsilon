@@ -3,11 +3,11 @@ import 'package:upsilon/features/c_solver/screens/game_screen.dart';
 import 'package:upsilon/features/home/screens/home_screen.dart';
 
 @MaterialAutoRouter(
-  replaceInRouteName: 'Screen,Route',
+  replaceInRouteName: 'Adaptor,Route',
   preferRelativeImports: false,
   routes: [
-    AutoRoute(path: '/', page: HomeScreen),
-    AutoRoute(path: 'game', page: GameScreen),
+    AutoRoute(path: '/', page: HomeAdaptor),
+    AutoRoute(path: 'game', page: GameAdaptor),
     RedirectRoute(path: '*', redirectTo: '/'),
   ],
 )
