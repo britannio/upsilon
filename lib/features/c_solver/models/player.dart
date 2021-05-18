@@ -22,6 +22,8 @@ class Player with _$Player {
 
   static const Player initial = Player(cards: {}, plausibleCardsGroup: {});
 
+  bool get isFull => cards.length == maxCards;
+
   bool isValid() =>
       plausibleCardsGroup.every(
         (group) =>

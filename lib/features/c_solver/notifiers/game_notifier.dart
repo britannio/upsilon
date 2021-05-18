@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:pretty_json/pretty_json.dart';
 import 'package:upsilon/features/c_solver/models/card.dart';
 import 'package:upsilon/features/c_solver/models/game.dart';
 import 'package:upsilon/features/c_solver/models/game_event.dart';
+import 'package:upsilon/features/c_solver/models/player.dart';
 
 mixin AlertMixin<T> {
   void onAlert(T message);
@@ -21,15 +23,16 @@ class GameNotifier extends ChangeNotifier {
 
   bool get gameSolved => remainingCards.length == 3;
 
-  bool cardIsRemaining(Card card) => remainingCards.contains(card);
-  bool cardIsSelected(Card card) => _selectedCards.contains(card);
-  bool playerIsSelected(PlayerId id) => id == _selectedPlayer;
+  bool isCardRemaining(Card card) => remainingCards.contains(card);
+  bool isCardSelected(Card card) => _selectedCards.contains(card);
+  bool isPlayerSelected(PlayerId id) => id == _selectedPlayer;
+  Player _getPlayer(PlayerId id) => _game.playerMap[id]!;
+  bool isPlayerFull(PlayerId id) => _getPlayer(id).isFull;
 
   void toggleCardSelected(Card card) {
-    if (cardIsSelected(card))
+    if (isCardSelected(card))
       _selectedCards.remove(card);
-    else
-      _selectedCards.add(card);
+    else if (_selectedCards.length < 3) _selectedCards.add(card);
     notifyListeners();
   }
 
@@ -44,6 +47,11 @@ class GameNotifier extends ChangeNotifier {
       return;
     } else if (_selectedPlayer == null) {
       _alertMixin.onAlert('No player selected!');
+      return;
+    } else if (_game.playerMap[_selectedPlayer]!.isFull) {
+      _alertMixin.onAlert(
+        'All cards for player ${_selectedPlayer!.index} are known!',
+      );
       return;
     }
 
@@ -62,6 +70,10 @@ class GameNotifier extends ChangeNotifier {
         ),
       );
     }
+    debugPrint(prettyJson(_game.toJson()));
+    _selectedCards.clear();
+    _selectedPlayer = null;
+
     notifyListeners();
   }
 }

@@ -13,5 +13,6 @@ ThemeData themeData(BuildContext context) {
         TargetPlatform.android: ZoomPageTransitionsBuilder(),
       },
     ),
+    scaffoldBackgroundColor: Color(0xFF212121),
   );
 }

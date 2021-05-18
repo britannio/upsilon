@@ -50,9 +50,10 @@ class Game with _$Game {
   Game withEvent(GameEvent event) {
     final newGame = event.when(
       plausibleCards: (PlayerId playerId, Set<Card> cards) {
-        final cardsWithoutRemaining = cards.difference(remainingCards);
+        /// [cards] where the owner isn't known
+        final cardsWithRemaining = cards.intersection(remainingCards);
         final player =
-            playerMap[playerId]!.withPlausibleCards(cardsWithoutRemaining);
+            playerMap[playerId]!.withPlausibleCards(cardsWithRemaining);
         final newPlayerMap = {...playerMap, playerId: player};
 
         final newGame = copyWith(
@@ -60,8 +61,8 @@ class Game with _$Game {
           events: [...events, event],
         );
 
-        return cardsWithoutRemaining.length == 1
-            ? _withoutRemainingCard(newGame, cardsWithoutRemaining.single)
+        return cardsWithRemaining.length == 1
+            ? _withoutRemainingCard(newGame, cardsWithRemaining.single)
             : newGame;
       },
       playerHasCard: (PlayerId playerId, Card card) {

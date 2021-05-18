@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Card;
 import 'package:provider/provider.dart';
+import 'package:upsilon/core/components/card_button.dart';
 import 'package:upsilon/core/components/rounded_bottom_corners_border.dart';
 import 'package:upsilon/core/navigation/navigation.dart';
 import 'package:upsilon/features/c_solver/models/card.dart';
@@ -25,7 +26,6 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         shape: RoundedBottomCornersBorder(16),
       ),
-      backgroundColor: Color(0xFF212121),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
@@ -54,12 +54,13 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Builder(builder: (context) {
-        return FloatingActionButton(
+        return FloatingActionButton.extended(
           onPressed: notifier.canStart
               ? () => context.router.push(GameRoute(myCards: notifier.cards))
               : null,
-          child: Icon(Icons.play_arrow),
+          label: Text('START'),
         );
       }),
     );
@@ -94,29 +95,11 @@ class CardList extends StatelessWidget {
                 final selected = isSelected(card);
                 return Padding(
                   padding: EdgeInsets.symmetric(vertical: 4),
-                  child: ElevatedButton(
+                  child: CardButton(
+                    card: card,
+                    selected: selected,
                     onPressed: () =>
                         context.read<HomeNotifier>().toggleCardSelected(card),
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                        StadiumBorder(
-                          side: selected
-                              ? BorderSide(color: Colors.black, width: 4)
-                              : BorderSide.none,
-                        ),
-                      ),
-                      backgroundColor: MaterialStateProperty.all(
-                        card.color ?? Theme.of(context).colorScheme.secondary,
-                      ),
-                      foregroundColor: MaterialStateProperty.all(
-                        card.color != null
-                            ? card.color!.computeLuminance() > 0.5
-                                ? Colors.black
-                                : Colors.white
-                            : null,
-                      ),
-                    ),
-                    child: Text(card.name),
                   ),
                 );
               },
