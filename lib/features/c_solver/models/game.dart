@@ -16,10 +16,8 @@ class Game with _$Game {
 
   factory Game.initial(Set<Card> player0Cards) => Game(
         playerMap: {
-          for (final id in PlayerId.values)
-            id: Player.initial.copyWith(
-              cards: id == PlayerId.zero ? player0Cards : const {},
-            ),
+          for (final id in PlayerId.values) id: Player.initial,
+          PlayerId.zero: Player.initial.copyWith(cards: player0Cards),
         },
         remainingCards: Card.all.difference(player0Cards),
         events: const [],
