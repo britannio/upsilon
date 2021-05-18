@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Upsilon - Cluedo Solver'),
+        centerTitle: true,
         elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -29,30 +30,34 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: CardList(
-              title: 'Characters',
-              cards: Card.characters.toList(),
-              isSelected: notifier.isCardSelected,
+      backgroundColor: Color(0xFF212121),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: CardList(
+                title: 'Characters',
+                cards: Card.characters.toList(),
+                isSelected: notifier.isCardSelected,
+              ),
             ),
-          ),
-          Expanded(
-            child: CardList(
-              title: 'Rooms',
-              cards: Card.rooms.toList(),
-              isSelected: notifier.isCardSelected,
+            Expanded(
+              child: CardList(
+                title: 'Rooms',
+                cards: Card.rooms.toList(),
+                isSelected: notifier.isCardSelected,
+              ),
             ),
-          ),
-          Expanded(
-            child: CardList(
-              title: 'Weapons',
-              cards: Card.weapons.toList(),
-              isSelected: notifier.isCardSelected,
-            ),
-          )
-        ],
+            Expanded(
+              child: CardList(
+                title: 'Weapons',
+                cards: Card.weapons.toList(),
+                isSelected: notifier.isCardSelected,
+              ),
+            )
+          ],
+        ),
       ),
       floatingActionButton: Builder(builder: (context) {
         return FloatingActionButton(
@@ -83,6 +88,7 @@ class CardList extends StatelessWidget {
     return Column(
       children: [
         Text(title),
+        const SizedBox(height: 4),
         Expanded(
           child: FractionallySizedBox(
             widthFactor: 0.9,
@@ -97,11 +103,22 @@ class CardList extends StatelessWidget {
                     onPressed: () =>
                         context.read<HomeNotifier>().toggleCardSelected(card),
                     style: ButtonStyle(
-                      shape: MaterialStateProperty.all(StadiumBorder()),
+                      shape: MaterialStateProperty.all(
+                        StadiumBorder(
+                          side: selected
+                              ? BorderSide(color: Colors.black, width: 4)
+                              : BorderSide.none,
+                        ),
+                      ),
                       backgroundColor: MaterialStateProperty.all(
-                        selected
-                            ? Colors.orange
-                            : Theme.of(context).colorScheme.secondary,
+                        card.color ?? Theme.of(context).colorScheme.secondary,
+                      ),
+                      foregroundColor: MaterialStateProperty.all(
+                        card.color != null
+                            ? card.color!.computeLuminance() > 0.5
+                                ? Colors.black
+                                : Colors.white
+                            : null,
                       ),
                     ),
                     child: Text(card.name),
