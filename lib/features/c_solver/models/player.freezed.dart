@@ -16,10 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PlayerTearOff {
   const _$PlayerTearOff();
 
-  _Player call({required Set<Card> cards, required Set<Card> plausibleCards}) {
+  _Player call(
+      {required Set<Card> cards, required Set<Set<Card>> plausibleCardsGroup}) {
     return _Player(
       cards: cards,
-      plausibleCards: plausibleCards,
+      plausibleCardsGroup: plausibleCardsGroup,
     );
   }
 }
@@ -33,7 +34,7 @@ mixin _$Player {
   Set<Card> get cards => throw _privateConstructorUsedError;
 
   /// Cards the player could possibly have.
-  Set<Card> get plausibleCards => throw _privateConstructorUsedError;
+  Set<Set<Card>> get plausibleCardsGroup => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerCopyWith<Player> get copyWith => throw _privateConstructorUsedError;
@@ -43,7 +44,7 @@ mixin _$Player {
 abstract class $PlayerCopyWith<$Res> {
   factory $PlayerCopyWith(Player value, $Res Function(Player) then) =
       _$PlayerCopyWithImpl<$Res>;
-  $Res call({Set<Card> cards, Set<Card> plausibleCards});
+  $Res call({Set<Card> cards, Set<Set<Card>> plausibleCardsGroup});
 }
 
 /// @nodoc
@@ -57,17 +58,17 @@ class _$PlayerCopyWithImpl<$Res> implements $PlayerCopyWith<$Res> {
   @override
   $Res call({
     Object? cards = freezed,
-    Object? plausibleCards = freezed,
+    Object? plausibleCardsGroup = freezed,
   }) {
     return _then(_value.copyWith(
       cards: cards == freezed
           ? _value.cards
           : cards // ignore: cast_nullable_to_non_nullable
               as Set<Card>,
-      plausibleCards: plausibleCards == freezed
-          ? _value.plausibleCards
-          : plausibleCards // ignore: cast_nullable_to_non_nullable
-              as Set<Card>,
+      plausibleCardsGroup: plausibleCardsGroup == freezed
+          ? _value.plausibleCardsGroup
+          : plausibleCardsGroup // ignore: cast_nullable_to_non_nullable
+              as Set<Set<Card>>,
     ));
   }
 }
@@ -77,7 +78,7 @@ abstract class _$PlayerCopyWith<$Res> implements $PlayerCopyWith<$Res> {
   factory _$PlayerCopyWith(_Player value, $Res Function(_Player) then) =
       __$PlayerCopyWithImpl<$Res>;
   @override
-  $Res call({Set<Card> cards, Set<Card> plausibleCards});
+  $Res call({Set<Card> cards, Set<Set<Card>> plausibleCardsGroup});
 }
 
 /// @nodoc
@@ -92,17 +93,17 @@ class __$PlayerCopyWithImpl<$Res> extends _$PlayerCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cards = freezed,
-    Object? plausibleCards = freezed,
+    Object? plausibleCardsGroup = freezed,
   }) {
     return _then(_Player(
       cards: cards == freezed
           ? _value.cards
           : cards // ignore: cast_nullable_to_non_nullable
               as Set<Card>,
-      plausibleCards: plausibleCards == freezed
-          ? _value.plausibleCards
-          : plausibleCards // ignore: cast_nullable_to_non_nullable
-              as Set<Card>,
+      plausibleCardsGroup: plausibleCardsGroup == freezed
+          ? _value.plausibleCardsGroup
+          : plausibleCardsGroup // ignore: cast_nullable_to_non_nullable
+              as Set<Set<Card>>,
     ));
   }
 }
@@ -111,7 +112,7 @@ class __$PlayerCopyWithImpl<$Res> extends _$PlayerCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Player extends _Player {
-  const _$_Player({required this.cards, required this.plausibleCards})
+  const _$_Player({required this.cards, required this.plausibleCardsGroup})
       : super._();
 
   @override
@@ -121,11 +122,11 @@ class _$_Player extends _Player {
   @override
 
   /// Cards the player could possibly have.
-  final Set<Card> plausibleCards;
+  final Set<Set<Card>> plausibleCardsGroup;
 
   @override
   String toString() {
-    return 'Player(cards: $cards, plausibleCards: $plausibleCards)';
+    return 'Player(cards: $cards, plausibleCardsGroup: $plausibleCardsGroup)';
   }
 
   @override
@@ -134,16 +135,16 @@ class _$_Player extends _Player {
         (other is _Player &&
             (identical(other.cards, cards) ||
                 const DeepCollectionEquality().equals(other.cards, cards)) &&
-            (identical(other.plausibleCards, plausibleCards) ||
+            (identical(other.plausibleCardsGroup, plausibleCardsGroup) ||
                 const DeepCollectionEquality()
-                    .equals(other.plausibleCards, plausibleCards)));
+                    .equals(other.plausibleCardsGroup, plausibleCardsGroup)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cards) ^
-      const DeepCollectionEquality().hash(plausibleCards);
+      const DeepCollectionEquality().hash(plausibleCardsGroup);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +155,7 @@ class _$_Player extends _Player {
 abstract class _Player extends Player implements Validator {
   const factory _Player(
       {required Set<Card> cards,
-      required Set<Card> plausibleCards}) = _$_Player;
+      required Set<Set<Card>> plausibleCardsGroup}) = _$_Player;
   const _Player._() : super._();
 
   @override
@@ -164,7 +165,7 @@ abstract class _Player extends Player implements Validator {
   @override
 
   /// Cards the player could possibly have.
-  Set<Card> get plausibleCards => throw _privateConstructorUsedError;
+  Set<Set<Card>> get plausibleCardsGroup => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PlayerCopyWith<_Player> get copyWith => throw _privateConstructorUsedError;

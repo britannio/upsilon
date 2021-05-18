@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart' show Color, Colors;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:upsilon/features/c_solver/models/card.dart';
+import 'package:upsilon/features/c_solver/models/game_event.dart';
 import 'package:upsilon/features/c_solver/models/player.dart';
 import 'package:upsilon/features/c_solver/models/validator.dart';
-import 'package:upsilon/features/c_solver/unions/card.dart';
 
 part 'game.freezed.dart';
 
@@ -9,29 +11,25 @@ part 'game.freezed.dart';
 class Game with _$Game {
   @Implements(Validator)
   const factory Game({
-    required Player player0,
-    required Player player1,
-    required Player player2,
-    required Player player3,
-    required Player player4,
-    required Player player5,
+    required Map<PlayerId, Player> playerMap,
     required Set<Card> remainingCards,
+    required List<GameEvent> events,
   }) = _Game;
 
   factory Game.initial(Set<Card> player0Cards) => Game(
-        player0: Player.initial.copyWith(cards: player0Cards),
-        player1: Player.initial,
-        player2: Player.initial,
-        player3: Player.initial,
-        player4: Player.initial,
-        player5: Player.initial,
+        playerMap: {
+          for (final id in PlayerId.values)
+            id: Player.initial.copyWith(
+              cards: id == PlayerId.zero ? player0Cards : const {},
+            ),
+        },
         remainingCards: Card.all.difference(player0Cards),
+        events: const [],
       );
 
   const Game._();
 
-  List<Player> get players =>
-      [player0, player1, player2, player3, player4, player5];
+  Iterable<Player> get players => playerMap.values;
 
   bool isValid() {
     final players = this.players;
@@ -48,6 +46,93 @@ class Game with _$Game {
       cards.addAll(playerCards);
     }
     return true;
+  }
+
+  Game withEvent(GameEvent event) {
+    final newGame = event.when(
+      plausibleCards: (PlayerId playerId, Set<Card> cards) {
+        final cardsWithoutRemaining = cards.difference(remainingCards);
+        final player =
+            playerMap[playerId]!.withPlausibleCards(cardsWithoutRemaining);
+        final newPlayerMap = {...playerMap, playerId: player};
+
+        final newGame = copyWith(
+          playerMap: newPlayerMap,
+          events: [...events, event],
+        );
+
+        return cardsWithoutRemaining.length == 1
+            ? _withoutRemainingCard(newGame, cardsWithoutRemaining.single)
+            : newGame;
+      },
+      playerHasCard: (PlayerId playerId, Card card) {
+        final newPlayerMap = {
+          for (final id in [...PlayerId.values]..remove(playerId))
+            id: playerMap[id]!.withoutPlausibleCard(card),
+          playerId: playerMap[playerId]!.withPlausibleCards({card})
+        };
+
+        var newRemainingCards = {...remainingCards}..remove(card);
+        while (true) {
+          bool remainingCardsUpdated = false;
+          for (final id in PlayerId.values) {
+            final player = newPlayerMap[id]!;
+            final remainingCardsLength = newRemainingCards.length;
+            newRemainingCards = newRemainingCards.difference(player.cards);
+
+            remainingCardsUpdated = remainingCardsUpdated ||
+                newRemainingCards.length < remainingCardsLength;
+          }
+          if (!remainingCardsUpdated) break;
+
+          for (final id in PlayerId.values) {
+            final player =
+                newPlayerMap[id]!.wherePlausibleCardsIsIn(newRemainingCards);
+            newPlayerMap[id] = player;
+          }
+        }
+
+        return copyWith(
+          playerMap: newPlayerMap,
+          remainingCards: newRemainingCards,
+          events: [...events, event],
+        );
+      },
+    );
+
+    assert(newGame.isValid(), 'invalid game state after $event');
+    if (!newGame.isValid()) print('invalid game state after $event');
+
+    return newGame;
+  }
+
+  static Game _withoutRemainingCard(Game game, Card card) {
+    final newPlayerMap = {...game.playerMap};
+
+    var newRemainingCards = {...game.remainingCards}..remove(card);
+    while (true) {
+      bool remainingCardsUpdated = false;
+      for (final id in PlayerId.values) {
+        final player = newPlayerMap[id]!;
+        final remainingCardsLength = newRemainingCards.length;
+        newRemainingCards = newRemainingCards.difference(player.cards);
+
+        remainingCardsUpdated = remainingCardsUpdated ||
+            newRemainingCards.length < remainingCardsLength;
+      }
+      if (!remainingCardsUpdated) break;
+
+      for (final id in PlayerId.values) {
+        final player =
+            newPlayerMap[id]!.wherePlausibleCardsIsIn(newRemainingCards);
+        newPlayerMap[id] = player;
+      }
+    }
+
+    return game.copyWith(
+      playerMap: newPlayerMap,
+      remainingCards: newRemainingCards,
+    );
   }
 }
 
@@ -66,3 +151,24 @@ enum Room {
 }
 
 enum Weapon { candlestick, knife, leadPipe, revolver, rope, wrench }
+
+enum PlayerId { zero, one, two, three, four, five }
+
+extension CharacterX on Character {
+  Color get color {
+    switch (this) {
+      case Character.red:
+        return Colors.red;
+      case Character.green:
+        return Colors.green;
+      case Character.yellow:
+        return Colors.yellow;
+      case Character.purple:
+        return Colors.purple;
+      case Character.blue:
+        return Colors.blue;
+      case Character.white:
+        return Colors.white;
+    }
+  }
+}

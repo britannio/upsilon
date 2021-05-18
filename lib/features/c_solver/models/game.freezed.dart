@@ -17,21 +17,13 @@ class _$GameTearOff {
   const _$GameTearOff();
 
   _Game call(
-      {required Player player0,
-      required Player player1,
-      required Player player2,
-      required Player player3,
-      required Player player4,
-      required Player player5,
-      required Set<Card> remainingCards}) {
+      {required Map<PlayerId, Player> playerMap,
+      required Set<Card> remainingCards,
+      required List<GameEvent> events}) {
     return _Game(
-      player0: player0,
-      player1: player1,
-      player2: player2,
-      player3: player3,
-      player4: player4,
-      player5: player5,
+      playerMap: playerMap,
       remainingCards: remainingCards,
+      events: events,
     );
   }
 }
@@ -41,13 +33,9 @@ const $Game = _$GameTearOff();
 
 /// @nodoc
 mixin _$Game {
-  Player get player0 => throw _privateConstructorUsedError;
-  Player get player1 => throw _privateConstructorUsedError;
-  Player get player2 => throw _privateConstructorUsedError;
-  Player get player3 => throw _privateConstructorUsedError;
-  Player get player4 => throw _privateConstructorUsedError;
-  Player get player5 => throw _privateConstructorUsedError;
+  Map<PlayerId, Player> get playerMap => throw _privateConstructorUsedError;
   Set<Card> get remainingCards => throw _privateConstructorUsedError;
+  List<GameEvent> get events => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GameCopyWith<Game> get copyWith => throw _privateConstructorUsedError;
@@ -58,20 +46,9 @@ abstract class $GameCopyWith<$Res> {
   factory $GameCopyWith(Game value, $Res Function(Game) then) =
       _$GameCopyWithImpl<$Res>;
   $Res call(
-      {Player player0,
-      Player player1,
-      Player player2,
-      Player player3,
-      Player player4,
-      Player player5,
-      Set<Card> remainingCards});
-
-  $PlayerCopyWith<$Res> get player0;
-  $PlayerCopyWith<$Res> get player1;
-  $PlayerCopyWith<$Res> get player2;
-  $PlayerCopyWith<$Res> get player3;
-  $PlayerCopyWith<$Res> get player4;
-  $PlayerCopyWith<$Res> get player5;
+      {Map<PlayerId, Player> playerMap,
+      Set<Card> remainingCards,
+      List<GameEvent> events});
 }
 
 /// @nodoc
@@ -84,86 +61,24 @@ class _$GameCopyWithImpl<$Res> implements $GameCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? player0 = freezed,
-    Object? player1 = freezed,
-    Object? player2 = freezed,
-    Object? player3 = freezed,
-    Object? player4 = freezed,
-    Object? player5 = freezed,
+    Object? playerMap = freezed,
     Object? remainingCards = freezed,
+    Object? events = freezed,
   }) {
     return _then(_value.copyWith(
-      player0: player0 == freezed
-          ? _value.player0
-          : player0 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player1: player1 == freezed
-          ? _value.player1
-          : player1 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player2: player2 == freezed
-          ? _value.player2
-          : player2 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player3: player3 == freezed
-          ? _value.player3
-          : player3 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player4: player4 == freezed
-          ? _value.player4
-          : player4 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player5: player5 == freezed
-          ? _value.player5
-          : player5 // ignore: cast_nullable_to_non_nullable
-              as Player,
+      playerMap: playerMap == freezed
+          ? _value.playerMap
+          : playerMap // ignore: cast_nullable_to_non_nullable
+              as Map<PlayerId, Player>,
       remainingCards: remainingCards == freezed
           ? _value.remainingCards
           : remainingCards // ignore: cast_nullable_to_non_nullable
               as Set<Card>,
+      events: events == freezed
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<GameEvent>,
     ));
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player0 {
-    return $PlayerCopyWith<$Res>(_value.player0, (value) {
-      return _then(_value.copyWith(player0: value));
-    });
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player1 {
-    return $PlayerCopyWith<$Res>(_value.player1, (value) {
-      return _then(_value.copyWith(player1: value));
-    });
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player2 {
-    return $PlayerCopyWith<$Res>(_value.player2, (value) {
-      return _then(_value.copyWith(player2: value));
-    });
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player3 {
-    return $PlayerCopyWith<$Res>(_value.player3, (value) {
-      return _then(_value.copyWith(player3: value));
-    });
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player4 {
-    return $PlayerCopyWith<$Res>(_value.player4, (value) {
-      return _then(_value.copyWith(player4: value));
-    });
-  }
-
-  @override
-  $PlayerCopyWith<$Res> get player5 {
-    return $PlayerCopyWith<$Res>(_value.player5, (value) {
-      return _then(_value.copyWith(player5: value));
-    });
   }
 }
 
@@ -173,26 +88,9 @@ abstract class _$GameCopyWith<$Res> implements $GameCopyWith<$Res> {
       __$GameCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Player player0,
-      Player player1,
-      Player player2,
-      Player player3,
-      Player player4,
-      Player player5,
-      Set<Card> remainingCards});
-
-  @override
-  $PlayerCopyWith<$Res> get player0;
-  @override
-  $PlayerCopyWith<$Res> get player1;
-  @override
-  $PlayerCopyWith<$Res> get player2;
-  @override
-  $PlayerCopyWith<$Res> get player3;
-  @override
-  $PlayerCopyWith<$Res> get player4;
-  @override
-  $PlayerCopyWith<$Res> get player5;
+      {Map<PlayerId, Player> playerMap,
+      Set<Card> remainingCards,
+      List<GameEvent> events});
 }
 
 /// @nodoc
@@ -206,43 +104,23 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? player0 = freezed,
-    Object? player1 = freezed,
-    Object? player2 = freezed,
-    Object? player3 = freezed,
-    Object? player4 = freezed,
-    Object? player5 = freezed,
+    Object? playerMap = freezed,
     Object? remainingCards = freezed,
+    Object? events = freezed,
   }) {
     return _then(_Game(
-      player0: player0 == freezed
-          ? _value.player0
-          : player0 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player1: player1 == freezed
-          ? _value.player1
-          : player1 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player2: player2 == freezed
-          ? _value.player2
-          : player2 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player3: player3 == freezed
-          ? _value.player3
-          : player3 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player4: player4 == freezed
-          ? _value.player4
-          : player4 // ignore: cast_nullable_to_non_nullable
-              as Player,
-      player5: player5 == freezed
-          ? _value.player5
-          : player5 // ignore: cast_nullable_to_non_nullable
-              as Player,
+      playerMap: playerMap == freezed
+          ? _value.playerMap
+          : playerMap // ignore: cast_nullable_to_non_nullable
+              as Map<PlayerId, Player>,
       remainingCards: remainingCards == freezed
           ? _value.remainingCards
           : remainingCards // ignore: cast_nullable_to_non_nullable
               as Set<Card>,
+      events: events == freezed
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<GameEvent>,
     ));
   }
 }
@@ -252,72 +130,43 @@ class __$GameCopyWithImpl<$Res> extends _$GameCopyWithImpl<$Res>
 /// @nodoc
 class _$_Game extends _Game {
   const _$_Game(
-      {required this.player0,
-      required this.player1,
-      required this.player2,
-      required this.player3,
-      required this.player4,
-      required this.player5,
-      required this.remainingCards})
+      {required this.playerMap,
+      required this.remainingCards,
+      required this.events})
       : super._();
 
   @override
-  final Player player0;
-  @override
-  final Player player1;
-  @override
-  final Player player2;
-  @override
-  final Player player3;
-  @override
-  final Player player4;
-  @override
-  final Player player5;
+  final Map<PlayerId, Player> playerMap;
   @override
   final Set<Card> remainingCards;
+  @override
+  final List<GameEvent> events;
 
   @override
   String toString() {
-    return 'Game(player0: $player0, player1: $player1, player2: $player2, player3: $player3, player4: $player4, player5: $player5, remainingCards: $remainingCards)';
+    return 'Game(playerMap: $playerMap, remainingCards: $remainingCards, events: $events)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Game &&
-            (identical(other.player0, player0) ||
+            (identical(other.playerMap, playerMap) ||
                 const DeepCollectionEquality()
-                    .equals(other.player0, player0)) &&
-            (identical(other.player1, player1) ||
-                const DeepCollectionEquality()
-                    .equals(other.player1, player1)) &&
-            (identical(other.player2, player2) ||
-                const DeepCollectionEquality()
-                    .equals(other.player2, player2)) &&
-            (identical(other.player3, player3) ||
-                const DeepCollectionEquality()
-                    .equals(other.player3, player3)) &&
-            (identical(other.player4, player4) ||
-                const DeepCollectionEquality()
-                    .equals(other.player4, player4)) &&
-            (identical(other.player5, player5) ||
-                const DeepCollectionEquality()
-                    .equals(other.player5, player5)) &&
+                    .equals(other.playerMap, playerMap)) &&
             (identical(other.remainingCards, remainingCards) ||
                 const DeepCollectionEquality()
-                    .equals(other.remainingCards, remainingCards)));
+                    .equals(other.remainingCards, remainingCards)) &&
+            (identical(other.events, events) ||
+                const DeepCollectionEquality().equals(other.events, events)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(player0) ^
-      const DeepCollectionEquality().hash(player1) ^
-      const DeepCollectionEquality().hash(player2) ^
-      const DeepCollectionEquality().hash(player3) ^
-      const DeepCollectionEquality().hash(player4) ^
-      const DeepCollectionEquality().hash(player5) ^
-      const DeepCollectionEquality().hash(remainingCards);
+      const DeepCollectionEquality().hash(playerMap) ^
+      const DeepCollectionEquality().hash(remainingCards) ^
+      const DeepCollectionEquality().hash(events);
 
   @JsonKey(ignore: true)
   @override
@@ -327,29 +176,17 @@ class _$_Game extends _Game {
 
 abstract class _Game extends Game implements Validator {
   const factory _Game(
-      {required Player player0,
-      required Player player1,
-      required Player player2,
-      required Player player3,
-      required Player player4,
-      required Player player5,
-      required Set<Card> remainingCards}) = _$_Game;
+      {required Map<PlayerId, Player> playerMap,
+      required Set<Card> remainingCards,
+      required List<GameEvent> events}) = _$_Game;
   const _Game._() : super._();
 
   @override
-  Player get player0 => throw _privateConstructorUsedError;
-  @override
-  Player get player1 => throw _privateConstructorUsedError;
-  @override
-  Player get player2 => throw _privateConstructorUsedError;
-  @override
-  Player get player3 => throw _privateConstructorUsedError;
-  @override
-  Player get player4 => throw _privateConstructorUsedError;
-  @override
-  Player get player5 => throw _privateConstructorUsedError;
+  Map<PlayerId, Player> get playerMap => throw _privateConstructorUsedError;
   @override
   Set<Card> get remainingCards => throw _privateConstructorUsedError;
+  @override
+  List<GameEvent> get events => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GameCopyWith<_Game> get copyWith => throw _privateConstructorUsedError;
