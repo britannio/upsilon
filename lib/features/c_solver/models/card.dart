@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:upsilon/features/c_solver/models/game.dart';
 
@@ -23,4 +25,9 @@ class Card with _$Card {
       Set.unmodifiable(Weapon.values.map($Card.weapon));
 
   String get name => RegExp(r'\.(\w+)\)').firstMatch(toString())!.group(1)!;
+
+  Color? get color => maybeWhen(
+        character: (character) => character.color,
+        orElse: () => null,
+      );
 }
